@@ -14,7 +14,7 @@
         },
         {
           "name": "serverest/userToken",
-          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJlbHRyYW5vQHFhLmNvbS5iciIsInBhc3N3b3JkIjoidGVzdGUiLCJpYXQiOjE3MTIwMDI1OTcsImV4cCI6MTcxMjAwMzE5N30.6pwZFQutQIn04Rtz7ZNQMUkZj4mSPI3arX8ofaOXNyY"
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJlbHRyYW5vQHFhLmNvbS5iciIsInBhc3N3b3JkIjoidGVzdGUiLCJpYXQiOjE3MTIwMDIwNzQsImV4cCI6MTcxMjAwMjY3NH0.PExAbO6bA_FRihs7lBWJZbyvOeyPLre8hltwc6kzxcw"
         }
       ]
     }
