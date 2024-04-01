@@ -17,5 +17,4 @@ setup('authenticate', async ({ page }) => {
 //Guardar o estado de autenticação no arquivo .auth/user.json
   await page.context().storageState({ path: authFile });
   console.log('authFile:', authFile);
-  console.log('Context storageState:', await page.context().storageState());
 });
