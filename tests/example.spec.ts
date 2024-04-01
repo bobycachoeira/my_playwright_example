@@ -20,6 +20,6 @@ import { test, expect } from '@playwright/test';
 
 test('do something', async ({ page }) => {
   await page.goto('/admin/home');
-  await expect(page.getByText('Bem Vindo Rogelio.Ward3', { exact: true })).toBeVisible();
+  await expect(page.getByText('Bem Vindo Fulano da Silva', { exact: true })).toBeVisible();
 
 });
