@@ -1,17 +1,43 @@
 import { test as setup, expect } from '@playwright/test';
-import { log } from 'console';
+const axios = require('axios');
+import { faker } from '@faker-js/faker';
+
+import { setUserId } from './globals';
 
 const authFile = 'fixtures/.auth/user.json';
 
 setup('authenticate', async ({ page }) => {
-  // Perform authentication steps. Replace these actions with your own.
+  //cria usuário para login
+    const url = 'https://serverest.dev/usuarios';
+    // Dados a serem enviados
+    const postData = {
+      nome: faker.person.fullName(),
+      email: faker.internet.email(),
+      password: 'teste',
+      administrador: 'true'
+    };
+    console.log('PostData:', postData);
+
+    axios.post('https://serverest.dev/usuarios', postData)
+  .then(response => {
+    console.log('Resposta do servidor:', response.data);
+    console.log('Response Code:', response.status);
+    setUserId(response.data._id);
+    
+  })
+  .catch(error => {
+    console.error('Erro ao fazer a requisição:', error.response.status);
+    console.error('Data:', error.response.data);
+  });
+
+  //Agora faz o login para guardar os dados
   await page.goto('/');
-  await page.locator('#email').fill('beltrano@qa.com.br');
+  await page.locator('#email').fill(postData.email);
   await page.locator('#password').fill('teste');
   await page.getByTestId('entrar').click();
   
   await page.waitForURL('https://front.serverest.dev/admin/home');
-  await expect(page.getByText('Bem Vindo Fulano da Silva', { exact: true })).toBeVisible();
+  await expect(page.getByText(`Bem Vindo ${postData.nome}`, { exact: true })).toBeVisible();
 
  
 //Guardar o estado de autenticação no arquivo .auth/user.json
