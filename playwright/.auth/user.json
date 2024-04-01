@@ -1,0 +1,22 @@
+{
+  "cookies": [],
+  "origins": [
+    {
+      "origin": "https://front.serverest.dev",
+      "localStorage": [
+        {
+          "name": "serverest/userNome",
+          "value": "Rogelio.Ward3"
+        },
+        {
+          "name": "serverest/userEmail",
+          "value": "Damion99@yahoo.com"
+        },
+        {
+          "name": "serverest/userToken",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkRhbWlvbjk5QHlhaG9vLmNvbSIsInBhc3N3b3JkIjoib1AxUXR6U2hMNUlKcF9fIiwiaWF0IjoxNzA3NzY2NzIwLCJleHAiOjE3MDc3NjczMjB9.RXdUlTuQaPoqtOuG2q7umThJlzRDbhGgsO2eePemCZ8"
+        }
+      ]
+    }
+  ]
+}
