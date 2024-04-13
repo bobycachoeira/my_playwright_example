@@ -8,7 +8,7 @@ test.afterAll('Teardown', async () => {
   console.log('Done with tests');
   console.log('userIdRECUPERADO:', userId);
   
-    axios.delete(`https://serverest.dev/usuarios/154134`, {
+  await axios.delete(`${process.env.URL_BACK}/usuarios/154134`, {
     headers: {
       'Accept': 'application/json'
     }
@@ -19,11 +19,13 @@ test.afterAll('Teardown', async () => {
   .catch(error => {
     console.error('Erro:', error);
   });
+  console.log('Chegou aqui');
 });
 
 
 
 test('do something', async ({ page }) => {
+  // console.log("URL da variável de ambiente:", process.env.URL);
   await page.goto('/admin/home');
   await expect(page.getByText('Bem Vindo Fulano da Silva', { exact: true })).toBeVisible();
 

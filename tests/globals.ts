@@ -2,5 +2,5 @@
 export let userId: string | null = null;
 
 export function setUserId(newUserId: string | null) {
-    userId = newUserId;  
+    userId = newUserId;
   }

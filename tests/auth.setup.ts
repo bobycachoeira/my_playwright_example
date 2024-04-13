@@ -2,14 +2,16 @@ import { test as setup, expect } from '@playwright/test';
 const axios = require('axios');
 import { faker } from '@faker-js/faker';
 
+
+
 import { setUserId } from './globals';
 
 const authFile = 'fixtures/.auth/user.json';
 
 setup('authenticate', async ({ page }) => {
   //cria usuário para login
-    const url = 'https://serverest.dev/usuarios';
     // Dados a serem enviados
+    console.log("URL da variável de ambiente:", process.env.URL);
     const postData = {
       nome: faker.person.fullName(),
       email: faker.internet.email(),
@@ -18,12 +20,12 @@ setup('authenticate', async ({ page }) => {
     };
     console.log('PostData:', postData);
 
-    axios.post('https://serverest.dev/usuarios', postData)
+
+  await axios.post(`${process.env.URL_BACK}/usuarios`, postData)
   .then(response => {
     console.log('Resposta do servidor:', response.data);
     console.log('Response Code:', response.status);
-    setUserId(response.data._id);
-    
+    setUserId(response.data._id);    
   })
   .catch(error => {
     console.error('Erro ao fazer a requisição:', error.response.status);
@@ -36,7 +38,7 @@ setup('authenticate', async ({ page }) => {
   await page.locator('#password').fill('teste');
   await page.getByTestId('entrar').click();
   
-  await page.waitForURL('https://front.serverest.dev/admin/home');
+  await page.waitForURL('/admin/home');
   await expect(page.getByText(`Bem Vindo ${postData.nome}`, { exact: true })).toBeVisible();
 
  
