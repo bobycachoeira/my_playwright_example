@@ -40,13 +40,13 @@ export default defineConfig({
     // Setup project
     {
       name: 'setup',
-      testMatch: /.*\.setup\.ts/,
+      testMatch: /.*setup\/.*\.setup\.ts/,
       teardown: 'cleanup',
     },
 
     {
       name: 'cleanup',
-      testMatch: /.*\.teardown\.ts/,
+      testMatch: /.*teardown\/.*\.teardown\.ts/,
     },
 
     {

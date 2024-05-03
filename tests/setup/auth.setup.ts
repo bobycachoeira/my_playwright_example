@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker';
 
 
 
-import utils from '../support/utils';
+import utils from '../../support/utils';
 
 const authFile = 'fixtures/.auth/user.json';
 

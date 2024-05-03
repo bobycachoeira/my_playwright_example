@@ -4,4 +4,4 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /fixtures/.auth/user.json
-# /fixtures/data/usuarioInserido.json
+/fixtures/data/usuarioInserido.json

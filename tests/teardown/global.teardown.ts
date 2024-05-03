@@ -1,5 +1,5 @@
 import { test as teardown } from '@playwright/test';
-import utils from '../support/utils';
+import utils from '../../support/utils';
 import axios from 'axios';
 
 let dadosUsuarioInserido; 
