@@ -10,21 +10,21 @@ test.beforeAll(async () => {
   dadosUsuarioInserido = await utils.loadData('usuarioInserido');
 });
 
-test.afterAll('Teardown', async () => {
-  let userIdDeletar = dadosUsuarioInserido.responseData._id
+// test.afterAll('Teardown', async () => {
+//   let userIdDeletar = dadosUsuarioInserido.responseData._id
   
-  await axios.delete(`${process.env.URL_BACK}/usuarios/${userIdDeletar}`, {
-    headers: {
-      'Accept': 'application/json'
-    }
-  })
-  .then(response => {
-    console.log('Resposta Delete:', response.data);
-  })
-  .catch(error => {
-    console.error('Erro:', error);
-  });
-});
+//   await axios.delete(`${process.env.URL_BACK}/usuarios/${userIdDeletar}`, {
+//     headers: {
+//       'Accept': 'application/json'
+//     }
+//   })
+//   .then(response => {
+//     console.log('Resposta Delete:', response.data);
+//   })
+//   .catch(error => {
+//     console.error('Erro:', error);
+//   });
+// });
 
 
 

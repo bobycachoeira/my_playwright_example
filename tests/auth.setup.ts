@@ -11,30 +11,28 @@ const authFile = 'fixtures/.auth/user.json';
 setup('authenticate', async ({ page }) => {
   //cria usuário para login
   // Dados a serem enviados
-  console.log("URL da variável de ambiente:", process.env.URL);
   const postData = {
     nome: faker.person.fullName(),
     email: faker.internet.email(),
     password: 'teste',
     administrador: 'true'
   };
-  console.log('PostData:', postData);
+  console.log('Usuário a ser inserido:', postData);
 
 
   await axios.post(`${process.env.URL_BACK}/usuarios`, postData)
     .then(response => {
-      console.log('Resposta do servidor:', response.data);
-      console.log('Response Code:', response.status);
       const responseData = response.data;
       const dadosUsuarioInserido = {
         postData,
         responseData
       }
       utils.writeFile('usuarioInserido', dadosUsuarioInserido)
+      console.log('Usuário inserido com sucesso: ', responseData);
     })
     .catch(error => {
-      console.error('Erro ao fazer a requisição:', error.response.status);
-      console.error('Data:', error.response.data);
+      console.error('Erro ao inserir usuário: ', error.response.status);
+      console.error('Data: ', error.response.data);
     });
 
   //Agora faz o login para guardar os dados
@@ -49,5 +47,4 @@ setup('authenticate', async ({ page }) => {
 
   //Guardar o estado de autenticação no arquivo .auth/user.json
   await page.context().storageState({ path: authFile });
-  console.log('authFile:', authFile);
 });
