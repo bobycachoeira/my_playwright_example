@@ -1,14 +1,19 @@
 import { test, expect } from '@playwright/test';
 const axios = require('axios');
 
-import { userId } from './globals';
+import utils from '../support/utils';
 
+let dadosUsuarioInserido; 
+
+test.beforeAll(async () => {
+  // Carrega os dados do arquivo uma vez antes de todos os testes
+  dadosUsuarioInserido = await utils.loadData('usuarioInserido');
+});
 
 test.afterAll('Teardown', async () => {
-  console.log('Done with tests');
-  console.log('userIdRECUPERADO:', userId);
+  let userIdDeletar = dadosUsuarioInserido.responseData._id
   
-  await axios.delete(`${process.env.URL_BACK}/usuarios/154134`, {
+  await axios.delete(`${process.env.URL_BACK}/usuarios/${userIdDeletar}`, {
     headers: {
       'Accept': 'application/json'
     }
@@ -19,15 +24,13 @@ test.afterAll('Teardown', async () => {
   .catch(error => {
     console.error('Erro:', error);
   });
-  console.log('Chegou aqui');
 });
 
 
 
-test('do something', async ({ page }) => {
-  // console.log("URL da variável de ambiente:", process.env.URL);
+test.only('do something', async ({ page }) => {
   await page.goto('/admin/home');
-  await expect(page.getByText('Bem Vindo Fulano da Silva', { exact: true })).toBeVisible();
+  await expect(page.getByText(`Bem Vindo ${dadosUsuarioInserido.postData.nome}`, { exact: true })).toBeVisible();
 
 }
 );

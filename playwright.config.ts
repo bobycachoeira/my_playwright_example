@@ -32,7 +32,7 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
-    video: 'retain-on-failure'
+    video: 'on'
   },
 
   /* Configure projects for major browsers */
@@ -45,14 +45,19 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome'],
         // Use prepared auth state.
-        storageState: 'playwright/.auth/user.json',
+        storageState: 'fixtures/.auth/user.json',
       },
-      dependencies: ['setup'],
+      dependencies: ['setup']
     },
 
     // {
     //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
+    //   use: {
+    //     ...devices['Desktop Firefox'],
+    //     // Use prepared auth state.
+    //     storageState: 'fixtures/.auth/user.json'
+    //   },
+    //   dependencies: ['setup']
     // },
 
     // {
